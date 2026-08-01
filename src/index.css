@@ -47,7 +47,7 @@
   border-radius: 0.75rem;
   padding: 0.875rem 1rem;
   text-align: center;
-  color: #94a3b8;
+  color: #475569;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -65,10 +65,15 @@
 .adsense-unit::before {
   content: "ADVERTISEMENT • GOOGLE ADSENSE";
   font-size: 0.6rem;
-  color: #94a3b8;
+  color: #475569;
   margin-bottom: 0.25rem;
   font-weight: 700;
   letter-spacing: 0.12em;
+}
+
+.adsense-unit span {
+  color: #334155;
+  font-weight: 600;
 }
 
 /* Article Styling */
@@ -208,11 +213,15 @@ html.dark .calc-card-hover:hover {
 html.dark .adsense-unit {
   background-color: #0f172a;
   border-color: #334155;
-  color: #64748b;
+  color: #cbd5e1;
 }
 
 html.dark .adsense-unit::before {
-  color: #64748b;
+  color: #cbd5e1;
+}
+
+html.dark .adsense-unit span {
+  color: #e2e8f0;
 }
 
 /* Article & Content Card Dark Mode Overrides */
