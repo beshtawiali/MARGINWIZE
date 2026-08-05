@@ -1,11 +1,37 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, Plugin} from 'vite';
+import { SHARED_HEAD_TAGS, SHARED_HEADER_HTML, SHARED_FOOTER_HTML } from './src/js/layout.js';
+
+function sharedLayoutPlugin(): Plugin {
+  return {
+    name: 'shared-layout-plugin',
+    transformIndexHtml(html) {
+      let res = html;
+      if (res.includes('<site-head>')) {
+        res = res.replace(/<site-head\s*>\s*<\/site-head>|<site-head\s*\/>/gi, SHARED_HEAD_TAGS);
+      }
+      if (res.includes('<site-header>')) {
+        res = res.replace(
+          /<site-header\s*>\s*<\/site-header>|<site-header\s*\/>/gi,
+          `<header id="site-header" class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40 shadow-xs">${SHARED_HEADER_HTML}</header>`
+        );
+      }
+      if (res.includes('<site-footer>')) {
+        res = res.replace(
+          /<site-footer\s*>\s*<\/site-footer>|<site-footer\s*\/>/gi,
+          `<footer id="site-footer" class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 mt-auto">${SHARED_FOOTER_HTML}</footer>`
+        );
+      }
+      return res;
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), sharedLayoutPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

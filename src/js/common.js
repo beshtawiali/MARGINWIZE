@@ -1,83 +1,5 @@
 // MarginWize Common Utilities & Navigation Logic
-
-document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
-  initMobileMenu();
-  initCurrencySelector();
-  initSearchFilter();
-  initCopyButtons();
-  initPrintButtons();
-  initFAQAccordions();
-});
-
-// Dark/Light Theme Toggle
-function initThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle-btn');
-  const darkIcon = document.getElementById('theme-toggle-dark-icon');
-  const lightIcon = document.getElementById('theme-toggle-light-icon');
-
-  const updateIcons = (isDark) => {
-    if (darkIcon && lightIcon) {
-      if (isDark) {
-        darkIcon.classList.add('hidden');
-        lightIcon.classList.remove('hidden');
-      } else {
-        lightIcon.classList.add('hidden');
-        darkIcon.classList.remove('hidden');
-      }
-    }
-  };
-
-  // Determine initial theme
-  const savedTheme = localStorage.getItem('marginwize_theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-  updateIcons(isDark);
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const currentlyDark = document.documentElement.classList.contains('dark');
-      if (currentlyDark) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('marginwize_theme', 'light');
-        updateIcons(false);
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('marginwize_theme', 'dark');
-        updateIcons(true);
-      }
-    });
-  }
-}
-
-// Mobile Navigation Menu Toggle
-function initMobileMenu() {
-  const toggleBtn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-
-  if (toggleBtn && menu) {
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isHidden = menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      toggleBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-    });
-
-    // Close menu when tapping anywhere outside
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-        menu.classList.add('hidden');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-}
+import { initLayout, updateThemeIcons } from './layout.js';
 
 // Global Currency Selection Handling (USD, EUR, GBP, SEK, INR, JPY)
 let currentCurrency = localStorage.getItem('marginwize_currency') || localStorage.getItem('fincalc_currency') || '$';
@@ -90,19 +12,103 @@ const currencySymbols = {
   JPY: '¥'
 };
 
+function runInit() {
+  initLayout();
+  initThemeToggle();
+  initMobileMenu();
+  initCurrencySelector();
+  initSearchFilter();
+  initCopyButtons();
+  initPrintButtons();
+  initFAQAccordions();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', runInit);
+} else {
+  runInit();
+}
+
+// Dark/Light Theme Toggle
+function initThemeToggle() {
+  // Determine initial theme
+  const savedTheme = localStorage.getItem('marginwize_theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+  updateThemeIcons();
+
+  document.removeEventListener('click', handleThemeToggleClick);
+  document.addEventListener('click', handleThemeToggleClick);
+}
+
+function handleThemeToggleClick(e) {
+  const toggleBtn = e.target.closest('#theme-toggle-btn');
+  if (toggleBtn) {
+    const currentlyDark = document.documentElement.classList.contains('dark');
+    if (currentlyDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('marginwize_theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('marginwize_theme', 'dark');
+    }
+    updateThemeIcons();
+  }
+}
+
+// Mobile Navigation Menu Toggle
+function initMobileMenu() {
+  document.removeEventListener('click', handleMobileMenuClick);
+  document.addEventListener('click', handleMobileMenuClick);
+}
+
+function handleMobileMenuClick(e) {
+  const toggleBtn = e.target.closest('#mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggleBtn && menu) {
+    e.stopPropagation();
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    toggleBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    return;
+  }
+
+  // Close menu when tapping anywhere outside
+  if (menu && !menu.classList.contains('hidden')) {
+    if (!menu.contains(e.target)) {
+      menu.classList.add('hidden');
+      const btn = document.getElementById('mobile-menu-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+  }
+}
+
+// Global Currency Selection Handling (USD, EUR, GBP, SEK, INR, JPY)
 function initCurrencySelector() {
   const selector = document.getElementById('currency-select');
   if (selector) {
     selector.value = currentCurrency;
-    selector.addEventListener('change', (e) => {
-      currentCurrency = e.target.value;
-      localStorage.setItem('marginwize_currency', currentCurrency);
-      updateCurrencySymbolsInUI();
-      // Dispatch custom event for calculators to recalculate if needed
-      window.dispatchEvent(new CustomEvent('currencyChange', { detail: { symbol: currentCurrency } }));
-    });
   }
+  document.removeEventListener('change', handleCurrencySelectChange);
+  document.addEventListener('change', handleCurrencySelectChange);
   updateCurrencySymbolsInUI();
+}
+
+function handleCurrencySelectChange(e) {
+  if (e.target && e.target.id === 'currency-select') {
+    currentCurrency = e.target.value;
+    localStorage.setItem('marginwize_currency', currentCurrency);
+    updateCurrencySymbolsInUI();
+    // Dispatch custom event for calculators to recalculate if needed
+    window.dispatchEvent(new CustomEvent('currencyChange', { detail: { symbol: currentCurrency } }));
+  }
 }
 
 export function getCurrencySymbol() {
@@ -164,30 +170,62 @@ function initSearchFilter() {
 
 // Copy Results to Clipboard
 function initCopyButtons() {
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.copy-results-btn');
-    if (!btn) return;
+  document.removeEventListener('click', handleCopyClick);
+  document.addEventListener('click', handleCopyClick);
+}
 
-    const targetId = btn.getAttribute('data-target');
-    const targetEl = document.getElementById(targetId);
-    if (!targetEl) return;
+function handleCopyClick(e) {
+  const btn = e.target.closest('.copy-results-btn');
+  if (!btn) return;
 
-    const textToCopy = targetEl.innerText || targetEl.textContent;
+  const targetId = btn.getAttribute('data-target');
+  const targetEl = document.getElementById(targetId);
+  if (!targetEl) return;
+
+  const textToCopy = targetEl.innerText || targetEl.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(textToCopy).then(() => {
       showToast('Results copied to clipboard!');
     }).catch(() => {
-      showToast('Failed to copy results');
+      fallbackCopyText(textToCopy);
     });
-  });
+  } else {
+    fallbackCopyText(textToCopy);
+  }
+}
+
+function fallbackCopyText(text) {
+  try {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    showToast('Results copied to clipboard!');
+  } catch (err) {
+    showToast('Failed to copy results');
+  }
 }
 
 // Print Handler
 function initPrintButtons() {
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.print-calc-btn')) {
-      window.print();
-    }
-  });
+  document.removeEventListener('click', handlePrintClick);
+  document.addEventListener('click', handlePrintClick);
+}
+
+function handlePrintClick(e) {
+  const btn = e.target.closest('.print-calc-btn');
+  if (!btn) return;
+
+  e.preventDefault();
+  try {
+    window.focus();
+    window.print();
+  } catch (err) {
+    console.error('Print error:', err);
+    showToast('Unable to open print dialog');
+  }
 }
 
 // Toast Notification
@@ -217,17 +255,21 @@ export function showToast(message) {
 
 // FAQ Accordions
 function initFAQAccordions() {
-  const faqButtons = document.querySelectorAll('.faq-accordion-btn');
-  faqButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const content = btn.nextElementSibling;
-      const icon = btn.querySelector('.faq-icon');
-      
-      content.classList.toggle('hidden');
-      if (icon) {
-        icon.classList.toggle('rotate-180');
-      }
-    });
-  });
+  document.removeEventListener('click', handleFAQClick);
+  document.addEventListener('click', handleFAQClick);
+}
+
+function handleFAQClick(e) {
+  const btn = e.target.closest('.faq-accordion-btn');
+  if (!btn) return;
+  const content = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  
+  if (content) {
+    content.classList.toggle('hidden');
+  }
+  if (icon) {
+    icon.classList.toggle('rotate-180');
+  }
 }
 

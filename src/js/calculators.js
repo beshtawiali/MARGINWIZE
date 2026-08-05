@@ -1,22 +1,23 @@
 import { formatCurrency, formatPercent, getCurrencySymbol } from './common.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function runInitCalculators() {
   initProfitMarginCalc();
   initMarkupCalc();
   initSalesTaxCalc();
   initBreakEvenCalc();
   initDiscountCalc();
   initRoiCalc();
+}
 
-  // Re-run current page calculation when currency symbol changes
-  window.addEventListener('currencyChange', () => {
-    initProfitMarginCalc();
-    initMarkupCalc();
-    initSalesTaxCalc();
-    initBreakEvenCalc();
-    initDiscountCalc();
-    initRoiCalc();
-  });
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', runInitCalculators);
+} else {
+  runInitCalculators();
+}
+
+// Re-run current page calculation when currency symbol changes
+window.addEventListener('currencyChange', () => {
+  runInitCalculators();
 });
 
 // Helper to parse input values cleanly
