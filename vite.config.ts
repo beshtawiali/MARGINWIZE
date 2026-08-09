@@ -52,6 +52,7 @@ export default defineConfig(() => {
           howToCalculateBreakEvenPoint: path.resolve(__dirname, 'how-to-calculate-break-even-point.html'),
           ebayProfitMarginCalculator: path.resolve(__dirname, 'ebay-profit-margin-calculator.html'),
           markupVsMargin: path.resolve(__dirname, 'markup-vs-margin.html'),
+          whatIsVat: path.resolve(__dirname, 'what-is-vat-simple-guide.html'),
           about: path.resolve(__dirname, 'about.html'),
           contact: path.resolve(__dirname, 'contact.html'),
           privacyPolicy: path.resolve(__dirname, 'privacy-policy.html'),
