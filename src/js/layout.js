@@ -145,6 +145,7 @@ export const SHARED_FOOTER_HTML = `
         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200 mb-3">Resources</h4>
         <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
           <li><a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400">Articles & Guides</a></li>
+          <li><a href="/how-to-calculate-stacked-discounts" class="hover:text-blue-600 dark:hover:text-blue-400">Stacked Discounts Guide</a></li>
           <li><a href="/what-is-vat-simple-guide" class="hover:text-blue-600 dark:hover:text-blue-400">What Is VAT? Guide</a></li>
           <li><a href="/margin-vs-markup-pricing-mistake" class="hover:text-blue-600 dark:hover:text-blue-400">Margin vs Markup Guide</a></li>
           <li><a href="/how-to-calculate-break-even-point" class="hover:text-blue-600 dark:hover:text-blue-400">Break-Even Analysis Guide</a></li>

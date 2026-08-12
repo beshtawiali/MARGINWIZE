@@ -53,6 +53,7 @@ export default defineConfig(() => {
           ebayProfitMarginCalculator: path.resolve(__dirname, 'ebay-profit-margin-calculator.html'),
           markupVsMargin: path.resolve(__dirname, 'markup-vs-margin.html'),
           whatIsVat: path.resolve(__dirname, 'what-is-vat-simple-guide.html'),
+          howToCalculateStackedDiscounts: path.resolve(__dirname, 'how-to-calculate-stacked-discounts.html'),
           about: path.resolve(__dirname, 'about.html'),
           contact: path.resolve(__dirname, 'contact.html'),
           privacyPolicy: path.resolve(__dirname, 'privacy-policy.html'),
