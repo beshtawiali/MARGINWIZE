@@ -170,17 +170,124 @@
           </div>
         </div>
 
-        <!-- VERTICAL LADDER BARS -->
-        <div class="pt-4 pb-2">
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 items-end h-72 sm:h-80">
+        <!-- RESPONSIVE MARKUP LADDER DISPLAY -->
+        
+        <!-- MOBILE VIEW (< sm): Stacked Horizontal Bar Cards for 375px+ Viewports -->
+        <div class="block sm:hidden space-y-3.5 pt-2">
+          
+          <!-- Mobile Tier 1: 25% -->
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+                <span class="px-2 py-0.5 rounded-md text-xs font-extrabold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 shrink-0">25% Markup</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Electronics</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-extrabold text-slate-900 dark:text-white" data-tier-price="25">$50.00</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+              <span class="text-slate-800 dark:text-slate-200 font-bold" data-tier-profit="25">+$10.00 profit</span>
+              <span class="font-medium text-slate-500 dark:text-slate-400">20.0% margin</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
+              <div class="h-full bg-blue-500 rounded-full transition-all duration-300" style="width: 41.7%;"></div>
+            </div>
+          </div>
+
+          <!-- Mobile Tier 2: 50% -->
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+                <span class="px-2 py-0.5 rounded-md text-xs font-extrabold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 shrink-0">50% Markup</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Wholesale</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-extrabold text-slate-900 dark:text-white" data-tier-price="50">$60.00</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+              <span class="text-slate-800 dark:text-slate-200 font-bold" data-tier-profit="50">+$20.00 profit</span>
+              <span class="font-medium text-slate-500 dark:text-slate-400">33.3% margin</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
+              <div class="h-full bg-blue-600 rounded-full transition-all duration-300" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <!-- Mobile Tier 3: 100% (Keystone) -->
+          <div class="p-4 rounded-xl bg-indigo-50/40 dark:bg-indigo-950/20 border-2 border-indigo-400/80 dark:border-indigo-600 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+                <span class="px-2 py-0.5 rounded-md text-xs font-extrabold bg-indigo-600 text-white shrink-0">100% Keystone</span>
+                <span class="text-xs text-indigo-700 dark:text-indigo-300 font-semibold">Apparel / Furn.</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-extrabold text-indigo-600 dark:text-indigo-400" data-tier-price="100">$80.00</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+              <span class="text-indigo-900 dark:text-indigo-200 font-bold" data-tier-profit="100">+$40.00 profit</span>
+              <span class="font-medium text-indigo-700 dark:text-indigo-300">50.0% margin</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+              <div class="h-full bg-indigo-600 rounded-full transition-all duration-300" style="width: 66.7%;"></div>
+            </div>
+          </div>
+
+          <!-- Mobile Tier 4: 150% -->
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+                <span class="px-2 py-0.5 rounded-md text-xs font-extrabold bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 shrink-0">150% Markup</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Boutique</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-extrabold text-slate-900 dark:text-white" data-tier-price="150">$100.00</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+              <span class="text-slate-800 dark:text-slate-200 font-bold" data-tier-profit="150">+$60.00 profit</span>
+              <span class="font-medium text-slate-500 dark:text-slate-400">60.0% margin</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
+              <div class="h-full bg-purple-600 rounded-full transition-all duration-300" style="width: 83.3%;"></div>
+            </div>
+          </div>
+
+          <!-- Mobile Tier 5: 200% -->
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+                <span class="px-2 py-0.5 rounded-md text-xs font-extrabold bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 shrink-0">200% Markup</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Restaurant / Food</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-extrabold text-slate-900 dark:text-white" data-tier-price="200">$120.00</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+              <span class="text-slate-800 dark:text-slate-200 font-bold" data-tier-profit="200">+$80.00 profit</span>
+              <span class="font-medium text-slate-500 dark:text-slate-400">66.7% margin</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
+              <div class="h-full bg-emerald-600 rounded-full transition-all duration-300" style="width: 100%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DESKTOP & TABLET VIEW (sm: and up): Vertical Ladder Bars -->
+        <div class="hidden sm:block pt-4 pb-2">
+          <div class="grid grid-cols-5 gap-3 lg:gap-4 items-end h-80">
             
             <!-- Tier 1: 25% -->
             <div class="flex flex-col items-center h-full justify-end group">
-              <div id="price-val-25" class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all">$50.00</div>
-              <div class="w-full max-w-[64px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 41.7%;">
-                <div id="bar-25" class="w-full bg-blue-400 dark:bg-blue-500 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
-                  <span id="profit-25" class="opacity-90">+$10</span>
-                  <span class="text-3xs opacity-75 hidden sm:inline">20% Margin</span>
+              <div class="text-xs lg:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all" data-tier-price="25">$50.00</div>
+              <div class="w-full max-w-[68px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 41.7%;">
+                <div class="w-full bg-blue-400 dark:bg-blue-500 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
+                  <span class="opacity-90" data-tier-profit-short="25">+$10</span>
+                  <span class="text-3xs opacity-75">20% Margin</span>
                 </div>
               </div>
               <div class="mt-2 text-center">
@@ -191,11 +298,11 @@
 
             <!-- Tier 2: 50% -->
             <div class="flex flex-col items-center h-full justify-end group">
-              <div id="price-val-50" class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all">$60.00</div>
-              <div class="w-full max-w-[64px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 50%;">
-                <div id="bar-50" class="w-full bg-blue-500 dark:bg-blue-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
-                  <span id="profit-50" class="opacity-90">+$20</span>
-                  <span class="text-3xs opacity-75 hidden sm:inline">33% Margin</span>
+              <div class="text-xs lg:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all" data-tier-price="50">$60.00</div>
+              <div class="w-full max-w-[68px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 50%;">
+                <div class="w-full bg-blue-500 dark:bg-blue-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
+                  <span class="opacity-90" data-tier-profit-short="50">+$20</span>
+                  <span class="text-3xs opacity-75">33% Margin</span>
                 </div>
               </div>
               <div class="mt-2 text-center">
@@ -207,11 +314,11 @@
             <!-- Tier 3: 100% (Keystone) -->
             <div class="flex flex-col items-center h-full justify-end group">
               <div class="text-3xs font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-1.5 py-0.5 rounded-full mb-1">Keystone</div>
-              <div id="price-val-100" class="text-xs sm:text-sm font-extrabold text-indigo-600 dark:text-indigo-400 mb-1.5 transition-all">$80.00</div>
-              <div class="w-full max-w-[64px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 66.7%;">
-                <div id="bar-100" class="w-full bg-indigo-500 dark:bg-indigo-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full shadow-xs">
-                  <span id="profit-100" class="opacity-90">+$40</span>
-                  <span class="text-3xs opacity-75 hidden sm:inline">50% Margin</span>
+              <div class="text-xs lg:text-sm font-extrabold text-indigo-600 dark:text-indigo-400 mb-1.5 transition-all" data-tier-price="100">$80.00</div>
+              <div class="w-full max-w-[68px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 66.7%;">
+                <div class="w-full bg-indigo-500 dark:bg-indigo-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full shadow-xs">
+                  <span class="opacity-90" data-tier-profit-short="100">+$40</span>
+                  <span class="text-3xs opacity-75">50% Margin</span>
                 </div>
               </div>
               <div class="mt-2 text-center">
@@ -222,11 +329,11 @@
 
             <!-- Tier 4: 150% -->
             <div class="flex flex-col items-center h-full justify-end group">
-              <div id="price-val-150" class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all">$100.00</div>
-              <div class="w-full max-w-[64px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 83.3%;">
-                <div id="bar-150" class="w-full bg-purple-500 dark:bg-purple-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
-                  <span id="profit-150" class="opacity-90">+$60</span>
-                  <span class="text-3xs opacity-75 hidden sm:inline">60% Margin</span>
+              <div class="text-xs lg:text-sm font-extrabold text-slate-900 dark:text-white mb-1.5 transition-all" data-tier-price="150">$100.00</div>
+              <div class="w-full max-w-[68px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 83.3%;">
+                <div class="w-full bg-purple-500 dark:bg-purple-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full">
+                  <span class="opacity-90" data-tier-profit-short="150">+$60</span>
+                  <span class="text-3xs opacity-75">60% Margin</span>
                 </div>
               </div>
               <div class="mt-2 text-center">
@@ -237,11 +344,11 @@
 
             <!-- Tier 5: 200% -->
             <div class="flex flex-col items-center h-full justify-end group">
-              <div id="price-val-200" class="text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400 mb-1.5 transition-all">$120.00</div>
-              <div class="w-full max-w-[64px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 100%;">
-                <div id="bar-200" class="w-full bg-emerald-500 dark:bg-emerald-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full shadow-xs">
-                  <span id="profit-200" class="opacity-90">+$80</span>
-                  <span class="text-3xs opacity-75 hidden sm:inline">66.7% Margin</span>
+              <div class="text-xs lg:text-sm font-extrabold text-emerald-600 dark:text-emerald-400 mb-1.5 transition-all" data-tier-price="200">$120.00</div>
+              <div class="w-full max-w-[68px] bg-slate-200 dark:bg-slate-700 rounded-t-xl overflow-hidden relative flex flex-col justify-end transition-all duration-300" style="height: 100%;">
+                <div class="w-full bg-emerald-500 dark:bg-emerald-600 flex flex-col justify-between items-center py-2 text-white font-bold text-2xs transition-all duration-500 h-full shadow-xs">
+                  <span class="opacity-90" data-tier-profit-short="200">+$80</span>
+                  <span class="text-3xs opacity-75">66.7% Margin</span>
                 </div>
               </div>
               <div class="mt-2 text-center">
@@ -282,11 +389,17 @@
               const price = cost * (1 + t.pct / 100);
               const profit = price - cost;
 
-              const priceEl = document.getElementById(`price-val-${t.id}`);
-              const profitEl = document.getElementById(`profit-${t.id}`);
+              document.querySelectorAll(`[data-tier-price="${t.id}"]`).forEach(el => {
+                el.textContent = '$' + price.toFixed(2);
+              });
 
-              if (priceEl) priceEl.textContent = '$' + price.toFixed(2);
-              if (profitEl) profitEl.textContent = '+$' + profit.toFixed(2);
+              document.querySelectorAll(`[data-tier-profit="${t.id}"]`).forEach(el => {
+                el.textContent = '+$' + profit.toFixed(2) + ' profit';
+              });
+
+              document.querySelectorAll(`[data-tier-profit-short="${t.id}"]`).forEach(el => {
+                el.textContent = '+$' + profit.toFixed(2);
+              });
             });
 
             const keystoneSummary = document.getElementById('keystone-summary-text');
