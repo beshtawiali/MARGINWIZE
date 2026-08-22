@@ -56,6 +56,7 @@ export default defineConfig(() => {
           howToCalculateStackedDiscounts: path.resolve(__dirname, 'how-to-calculate-stacked-discounts.html'),
           completeMarkupFormulaGuide: path.resolve(__dirname, 'complete-markup-formula-guide.html'),
           roiVsAnnualizedRoiCagr: path.resolve(__dirname, 'roi-vs-annualized-roi-cagr.html'),
+          howToCalculateSmallBusinessLoanPayment: path.resolve(__dirname, 'how-to-calculate-small-business-loan-payment.html'),
           about: path.resolve(__dirname, 'about.html'),
           contact: path.resolve(__dirname, 'contact.html'),
           privacyPolicy: path.resolve(__dirname, 'privacy-policy.html'),
